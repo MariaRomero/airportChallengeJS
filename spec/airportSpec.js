@@ -10,7 +10,7 @@ airport = new Airport();
     expect(airport.hangar[0]).toEqual(plane);
   });
 
-  it('cannot land a plane', function() {
+  xit('cannot land a plane', function() {
     expect(function(){airport.land(plane,'stormy');}).toThrowError('Unable to land, it is stormy!');
   });
 
@@ -24,9 +24,13 @@ airport = new Airport();
     expect(airport.hangar[0]).toEqual(plane);
   });
 
-  xit('planes cannot land when hangar is full', function() {
-    // 20.times{airport.land(plane,'sunny');
-    expect(airport.full).toEqual(true);
+  it('planes cannot land when hangar is full', function() {
+    var x = 0;
+    while(x < 21 ) {
+      airport.land(plane,'sunny');
+      x++;
+    }
+    expect(airport.isFull()).toEqual(true);
   });
 
 });

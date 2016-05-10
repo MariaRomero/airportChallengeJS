@@ -1,5 +1,7 @@
-function Airport() {
+function Airport(capacity) {
+  this.capacity = capacity || 20
   this.hangar = [];
+
 }
 
 Airport.prototype.land = function(plane,weatherConditions) {
@@ -15,5 +17,15 @@ Airport.prototype.takeOf = function(plane,weatherConditions) {
     throw new Error("Unable to take of, it is stormy!")
   } else {
     this.hangar.pop(plane);
+  }
+}
+
+Airport.prototype.isFull = function() {
+  var hangarLength = this.hangar.length
+  var capacity = this.capacity
+  if (hangarLength => capacity) {
+    return true
+  } else {
+    return false
   }
 }
